@@ -1,0 +1,93 @@
+.input-control{
+   background-color: transparent;
+   border: none;
+   outline: none;
+   width: 100%;
+   padding : 1rem;
+   font-size: 1.6rem;
+
+
+   &.text-area{
+      resize: none;
+   }
+}
+
+
+.contact-i-grp{
+    background-color: $white; 
+    position: relative;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    
+   &.__with-icon{
+     
+      display:  grid;
+      grid-template-columns: 5rem auto;
+      .icon{
+         background-color: $primary;
+         color: $white;
+         height: 5rem;
+         font-size: 3rem;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         transition: all .3s ease;
+      }
+   }
+      
+   label{
+      display : inline-block;
+      margin-left: 1rem;
+      font-size: 1.3rem;
+   }
+
+
+   .input-box{
+      border:  1px solid rgba($color: $primary, $alpha: 0.5); 
+      padding: 1rem;
+      transition: all .3s ease;
+   }
+
+   .error-messsage{
+      color: rgba($color:red, $alpha: 0.5);
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+   }
+
+
+   &:hover{
+      .icon{
+         background-color:$primary;
+      }
+
+      .input-box{
+         border-color: rgba($color: $primary, $alpha: 0.5);
+      }
+   }
+}
+
+
+
+.form-submit-btn{
+   padding: 1.5rem 2rem;
+   text-align: center;
+   border: 1px solid rgba($color: $sec, $alpha: 1.0);
+   text-transform: uppercase;
+   font-size: 1.6rem;
+   font-weight: 600;
+   transition: all .3s ease;
+   cursor: pointer;
+}
+
+.contact-form{
+   display: grid;
+   padding: .1rem;
+   grid-gap: .1rem;
+   position: relative;
+
+}

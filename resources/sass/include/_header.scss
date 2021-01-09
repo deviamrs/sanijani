@@ -1,0 +1,284 @@
+.header {
+    position: fixed;
+    height: 10rem;
+    width: calc(100% - 3rem);
+    border-bottom: 1px solid rgba($color: $sec, $alpha: 0.2);
+    left: 1.5rem;
+    top: 0;
+    right: 1.5rem;
+    background-color: rgba($color: $white, $alpha: 0.8);
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: all .3s ease;
+
+
+    @include media-955{
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    
+    }
+  
+    &__wrapper {
+        height: 100%;
+        @include fb-sb-ac;
+        position: initial;
+    }
+
+    &__list {
+        max-width: 70rem;
+        width: 100%;
+        @include fb-sb-ac;
+        padding: 1rem 0;
+
+
+        @include media-955{ 
+            position: absolute;
+            left: 0;
+            top: 10rem;
+            width: calc(100vw - 50%);
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-color: rgba($color: $white, $alpha: 0.9);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+            height: calc(100vh - 10rem);
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: all .3s ease;
+        }
+
+
+        @include media-550{  width: calc(100vw - 30%);   }
+        @include media-425{  width: calc(100vw - 20%);   }
+        @include media-375{  width: calc(100vw - 15%);   }
+        @include media-320{  width: calc(100vw - 10%);   }
+
+
+        &__item{
+            position: relative;
+ 
+
+
+            @include media-955{ 
+                margin-bottom: 1.5rem;
+                width: 100%;
+            }
+
+
+            &:hover{
+                .header__sub-list{
+                    visibility: visible;
+                    max-height: 50rem;
+
+                }
+            }
+        }
+        
+        &.__active{
+            
+            @include media-955{ transform: translateX(0);}
+            
+        }
+    }
+      
+    &__sub-list{
+        position : absolute;
+        left: 0;
+        top:  6rem;
+        background-color: rgba($color: $black, $alpha: 1);
+        min-width: 25rem;
+        transition: max-height .3s ease;
+        max-height: 0;
+        visibility:hidden;
+
+
+        @include media-955{ 
+            position: initial;
+            min-width: initial;
+            width: 100%;
+        }
+        
+
+
+    }
+
+    &__sublink{
+        font-size: 1.5rem;
+        color: $white;
+        padding: 1rem 2rem;
+        display: block;
+        line-height: 1.5;
+        border-left: 2px solid transparent;
+        transition: all .3s ease;
+
+        &:hover{
+          border-left-color: $sec;
+          
+        }
+    }
+
+    
+
+    &__link {
+        color: $black;
+        transition: all .3s ease;
+        font-size: 1.7rem;
+        font-weight: 400;
+        position: relative;
+        padding: 4rem 0;
+        @include media-955{ 
+            padding: 1rem;
+            display: block;
+        }
+        
+        &::before {
+            height: 1.8rem;
+            width: .1rem;
+            background-color: rgba($color: $black, $alpha: 0.68);
+            position: absolute;
+            left: 50%;
+            content: "";
+            transform: translateY(2rem) scale(0) translateX(-50%);
+            transition: all .3s ease;
+            
+            @include media-955{ 
+                display: none;
+            }
+
+        }
+
+        &::after {
+            height: .5rem;
+            width: .5rem;
+            border-radius: 50%;
+            background-color: rgba($color: $black, $alpha: 0.68);
+            position: absolute;
+            left: 50%;
+            content: "";
+            transform: translateY(2rem) translateX(-50%);
+            transition: all .3s ease;
+
+            @include media-955{ 
+                display: none;
+            }
+        }
+
+        &:hover {
+            color: $black;
+
+            &::before {
+                transform: translateY(2rem) scale(1) translateX(-50%);
+            }
+
+            &::after {
+                transform: translateY(3.8rem) translateX(-50%);
+
+            }
+        }
+
+       
+        &.active{
+            color: $black;
+
+            &::before {
+                transform: translateY(2rem) scale(1) translateX(-50%);
+            }
+
+            &::after {
+                transform: translateY(3.8rem) translateX(-50%);
+
+            }
+        }
+
+    }
+
+    &__logo {
+        align-self: center;
+        width: 10rem;
+
+        // @include media-425{ width: 10rem;}
+
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    .menu-lines{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 4rem;
+        width: 4rem;
+        // background-color: $black;
+        padding: 1rem;
+        cursor: pointer;
+        flex-direction: column;
+        transition: all .3s ease;
+        backface-visibility: hidden;
+        border: 2px solid $black; 
+        
+
+        
+        .line{
+            width:  100%;
+            height: .2rem;
+           
+            background-color: $black;
+            transition: all .3s ease;
+
+            &:nth-child(1){
+                margin-bottom: .3rem;
+            }
+            
+            
+        }
+
+
+       &:hover{
+
+        transform: scale(1.01);
+           .line{
+              background-color: $black;
+             
+           } 
+       }
+       
+       
+       
+       @include media-955{ display: flex  }
+
+
+
+
+       &.__active{
+            
+        .line{
+            &:nth-child(1){
+               @include media-955{
+                    
+                   transform : rotate(45deg) translate(3px, 2px);
+
+               }
+            }
+            &:nth-child(2){
+               @include media-955{
+
+                  transform : rotate(-45deg) translate(1px , -1px)
+
+                }
+            }
+        }
+
+        
+        
+       }
+       
+    }
+}
